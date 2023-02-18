@@ -19,6 +19,6 @@ function KnitClient:KnitInit()
 
 end
 
-Knit.Start():andThen(function()
+Knit.Start({ServicePromises = false}):andThen(function()
 	print("Client started");
 end):catch(warn)
