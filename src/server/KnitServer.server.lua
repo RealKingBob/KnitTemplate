@@ -1,12 +1,20 @@
 local RunService = game:GetService("RunService");
+local ReplicatedStorage = game:GetService("ReplicatedStorage");
+local ServerScriptService = game:GetService("ServerScriptService");
 
-local Knit = require(game:GetService("ReplicatedStorage").Packages.Knit)
+local Knit = require(ReplicatedStorage.Packages.Knit)
 local Component = require(Knit.Util.Component);
 local Promise = require(Knit.Util.Promise);
+
+----- Knit -----
+Knit.Shared = ReplicatedStorage.Common;
+
+Knit.Components = ServerScriptService.Components;
 
 -- Load all services within 'Services':
 Knit.AddServices(script.Parent.Services)
 
+Knit.ComponentsLoaded = false;
 
 --// Ensures that all components are loaded
 function Knit.OnComponentsLoaded()
